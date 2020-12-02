@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Boolflix</title>
+
+		<!-- Font Awesome 5.15.1 (CDN) -->
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" /> -->
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- VUE 2.x development version, includes helpful console warnings -->
+		<!-- CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+		<!-- Axios 0.21.0 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
+		
+	</head>
+	<body>
+		<!-- VUE root element -->
+		<div id="root">
+			<div class="container">
+				<div class="header">
+					<input @keyup.enter="search" v-model="searchMovie" type="text" name="search">
+				</div>
+				<div class="movies-box">
+					<ul class="movies-list">
+						<li v-for="(movie,index) in movies.results">
+							<img :src="imgSrc + movie.poster_path" alt="">
+							<span> {{ movie.title }} </span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Custom JS -->
+		<script src="js/main.js" charset="utf-8"></script>
+	</body>
+</html>
