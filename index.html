@@ -24,13 +24,17 @@
 		<div id="root">
 			<div class="container">
 				<div class="header">
-					<input @keyup.enter="search" v-model="searchMovie" type="text" name="search">
+					<input v-model="searchMovie" type="text" name="search">
+					<button @click="search">Search</button>
 				</div>
 				<div class="movies-box">
 					<ul class="movies-list">
 						<li v-for="(movie,index) in movies.results">
-							<img :src="imgSrc + movie.poster_path" alt="">
-							<span> {{ movie.title }} </span>
+							<!-- <img :src="imgSrc + movie.poster_path" alt=""> -->
+							<p class="title"> {{ movie.title }} </p>
+							<p class="original-title"> {{ movie.original_title }} </p>
+							<p class="language"> {{ movie.original_language }} </p>
+							<p class="rating"> {{ movie.vote_average }} </p>
 						</li>
 					</ul>
 				</div>
