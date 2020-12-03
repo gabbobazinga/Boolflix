@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+body {
+    background-color: #141414;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.header {
+    background-color: black;
+    height: 10vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.header img {
+    max-width: 150px;
+}
+
+.header .search {
+    align-items: center;
+}
+
+.header .search input[type = 'text'] {
+    border-radius: 0.5rem;
+    background-color: inherit;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    outline: none;
+}
+
+.header .search input[type = 'text']::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.header .search i {
+    color: white;
+    font-size: 0.9rem;
+} 
+
+/* MAIN */
+.movies-box {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    margin: 0.5rem;
+    padding: 0;
+    background-color: inherit;
+    width: 100%;
+}
+
+.card .top-card img {
+    height: 100%;
+    width: 100%;
+}
+
+.card .top-card i {
+    font-size: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card .bottom-card {
+    display: none;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    color: #DB1F2D;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-family: 'Bebas Neue', cursive;
+    text-transform: uppercase;
+}
+
+.card:hover .bottom-card {
+    display: flex;
+    cursor: pointer;
+}
+
+/* TEXT CARD INFO */
+.card .bottom-card .title {
+    font-size: 1.8rem;
+}
+
+.card .bottom-card .original-title {
+    font-size: 1rem;
+    position: relative;
+    top: -0.5rem;
+    margin-bottom: 2rem;
+}
