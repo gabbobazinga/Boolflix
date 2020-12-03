@@ -11,7 +11,7 @@ body {
 
 .header {
     background-color: black;
-    height: 10vh;
+    height: 70px;
     width: 100vw;
     align-items: center;
     justify-content: space-between;
@@ -87,7 +87,6 @@ body {
     color: #DB1F2D;
     background-color: rgba(0, 0, 0, 0.9);
     font-family: 'Bebas Neue', cursive;
-    text-transform: uppercase;
 }
 
 .card:hover .bottom-card {
@@ -104,5 +103,9 @@ body {
     font-size: 1rem;
     position: relative;
     top: -0.5rem;
-    margin-bottom: 2rem;
+}
+
+.card .bottom-card img {
+    width: 15%;
+    margin: 0 auto;
 }

@@ -49,7 +49,12 @@
 							<div class="bottom-card">
 								<span class="title"> {{ movie.title }} </span>
 								<span class="original-title"> {{ movie.original_title }} </span>
-								<span class="languages"> {{ movie.original_language }} </span>
+								<template v-if="checkFlag(index)"> 
+									<img :src="langInFlag(index)" alt="">
+								</template>
+								<template v-else>
+									<span> {{ movie.original_language }} </span>
+								</template> 
 								<span class="rating"><i v-for="index in 5" :class="voteInStar(index, movie.vote_average)"></i></span>
 							</div>						
 						</div>

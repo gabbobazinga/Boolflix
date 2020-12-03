@@ -16,6 +16,36 @@ const app = new Vue ({
     el: '#root',
     data: {
         movies: [],
+        languages: [
+            {
+              name: "Italian",
+              code: "it"
+            },{
+              name: "English",
+              code: "en"
+            },{
+              name: "Espanish",
+              code: "es"
+            },{
+              name: "German",
+              code: "de"
+            },{
+              name: "Japanese",
+              code: "ja"
+            },{
+              name: "Portuguese",
+              code: "pt"
+            },{
+              name: "Korean",
+              code: "ko"
+            },{
+              name: "Czech",
+              code: "cs"
+            },{
+            name: "French",
+            code: "fr"
+            }
+          ],
         searchMovie: '',
         pageSelected: 1,
         imgSrc: 'https://image.tmdb.org/t/p/w500/',
@@ -38,6 +68,16 @@ const app = new Vue ({
         },
         voteInStar(index,vote){
             return index <= Math.ceil(vote / 2) ? 'fas fa-star' : 'far fa-star';
+        },
+        checkFlag(index) {
+            for (let i = 0; i < this.languages.length; i++) {
+                if(this.languages[i].code == this.movies.results[index].original_language){
+                    return true;
+                }
+            }
+        },
+        langInFlag(index){
+            return 'img/' + this.movies.results[index].original_language + '.svg'
         }
     }
 })
