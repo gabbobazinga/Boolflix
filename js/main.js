@@ -1,13 +1,17 @@
 /*
-Milestone 2:
-Trasformiamo il voto da 1 a 10 decimale in un numero intero da 1 a 5, 
-così da permetterci di stampare a schermo un numero di stelle piene che vanno da 1 a 5.
+Milestone 3
+In questa milestone come prima cosa aggiungiamo la copertina del film 
+o della serie al nostro elenco. 
 
-Trasformiamo poi la stringa statica della lingua in una vera e propria bandiera della nazione 
-corrispondente, gestendo il caso in cui non abbiamo la bandiera della nazione ritornata dall’API
+Milestone 4:
+Creare un layout completo simil-Netflix:
+Un header che contiene logo e search bar
+Dopo aver ricercato qualcosa nella searchbar, 
+i risultati appaiono sotto forma di “card” in cui lo sfondo è rappresentato 
+dall’immagine di copertina
 
-Allarghiamo poi la ricerca anche alle serie tv. 
-
+Andando con il mouse sopra una card (on hover), 
+appaiono le informazioni aggiuntive già prese nei punti precedenti più la overview
 */
 
 const API_KEY = 'ede7fb5e58667f60723d8fe5658849f4';
