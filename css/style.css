@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 body {
     background-color: #141414;
-    overflow: hidden;
-    overflow-y: auto;
 }
 
 .container-fluid {
     padding: 0;
+    height: 100vh;
 }
 
 .header {
@@ -50,8 +49,10 @@ body {
 /* MAIN */
 .movies-box {
     padding: 1rem;
+    padding-top: 0;
     display: flex;
     justify-content: center;
+    height: 100%;
 }
 
 .card {
@@ -109,3 +110,53 @@ body {
     width: 15%;
     margin: 0 auto;
 }
+
+
+/* SCROLLBAR */
+main {
+    height: 87vh;
+    overflow-y: auto;
+    margin-bottom: 3vh;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+main {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+} 
+
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+footer .button {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: bold;
+    color: #DB1F2D;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    border-style: none;
+}
+

@@ -29,12 +29,12 @@
 					<img src="img/boolflix.png" alt="">
 					<div class="search d-flex">
 						<i class="fas fa-search"></i>
-						<input @keyup.enter="search" v-model="searchMovie" type="text" name="search" placeholder="Search">
+						<input @keyup.enter="search()" v-model="searchMovie" type="text" name="search" placeholder="Search">
 					</div>
 				</div>
 				<main>
 					<div class="movies-box row">
-						<div class="card col-2" v-for="(movie,index) in movies.results">
+						<div class="card col-xl-2 col-lg-3 col-md-3 col-sm-5" v-for="(movie,index) in movies.results">
 							<div class="top-card">
 								<template v-if="movie.poster_path">
 									<img :src="imgSrc + movie.poster_path" alt="">
@@ -47,8 +47,10 @@
 								</template>
 							</div>
 							<div class="bottom-card">
-								<span class="title"> {{ movie.title }} </span>
-								<span class="original-title"> {{ movie.original_title }} </span>
+								<span class="title" v-if="movie.title"> {{ movie.title }} </span>
+								<span class="title" v-else> {{ movie.name }} </span>
+								<span class="original-title" v-if="movie.original_title"> {{ movie.original_title }} </span>
+								<span class="original-title" v-else> {{ movie.original_name }} </span>
 								<template v-if="checkFlag(index)"> 
 									<img :src="langInFlag(index)" alt="">
 								</template>
@@ -60,6 +62,15 @@
 						</div>
 					</div>
 				</main>
+				<footer>
+					<template v-if="totalPages > 20">
+						<button @click="selectedPage(page), search()" v-for="page in 20" class="button"> {{ page }} </button>
+						<button class="button"> ... </button>
+					</template>
+					<template v-else>
+						<button @click="selectedPage(page), search()" v-for="page in totalPages" class="button"> {{ page }} </button>
+					</template>
+				</footer>
 			</div>
 		</div>
 		<!-- Custom JS -->
