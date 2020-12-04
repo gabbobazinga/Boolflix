@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 body {
     background-color: #141414;
+    scrollbar-color: #7a0000 #171717;
+    scrollbar-width: thin;
 }
 
 .container-fluid {
@@ -16,10 +18,12 @@ body {
     justify-content: space-between;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin-bottom: 1rem;
 }
 
 .header img {
     max-width: 150px;
+    cursor: pointer;
 }
 
 .header .search {
@@ -55,7 +59,8 @@ body {
     height: 100%;
 }
 
-.card {
+.card,
+.card-genre {
     position: relative;
     margin: 0.5rem;
     padding: 0;
@@ -63,12 +68,14 @@ body {
     width: 100%;
 }
 
-.card .top-card img {
+.card .top-card img,
+.card-genre .top-card-genre img {
     height: 100%;
     width: 100%;
 }
 
-.card .top-card i {
+.card .top-card i,
+.card-genre .top-card-genre i {
     font-size: 5rem;
     position: absolute;
     top: 50%;
@@ -76,7 +83,8 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.card .bottom-card {
+.card .bottom-card,
+.card-genre .bottom-card-genre {
     display: none;
     flex-flow: column nowrap;
     width: 100%;
@@ -90,27 +98,56 @@ body {
     font-family: 'Bebas Neue', cursive;
 }
 
-.card:hover .bottom-card {
+.card-genre .bottom-card-genre {
+    top: 0;
+    left: 0;
+}
+
+.card:hover .bottom-card,
+.card-genre:hover .bottom-card-genre {
     display: flex;
     cursor: pointer;
 }
 
 /* TEXT CARD INFO */
-.card .bottom-card .title {
+.card .bottom-card .title,
+.card-genre .bottom-card-genre .title {
     font-size: 1.8rem;
 }
 
-.card .bottom-card .original-title {
+.card .bottom-card .original-title,
+.card-genre .bottom-card-genre .original-title {
     font-size: 1rem;
     position: relative;
     top: -0.5rem;
 }
 
-.card .bottom-card img {
+.card .bottom-card img,
+.card-genre .bottom-card-genre img {
     width: 15%;
     margin: 0 auto;
 }
 
+/* GENRES BOX */
+.genres-box {
+    width: 95%;
+    margin-left: calc(5% / 2);
+    margin-bottom: 2rem;
+}
+
+.genres-box h1 {
+    color: #DB1F2D;
+    font-family: 'Bebas Neue', cursive;
+    text-align: left;
+    font-size: 2rem;
+}
+
+.genre-cardList {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+}
 
 /* SCROLLBAR */
 main {
@@ -129,11 +166,31 @@ main {
     scrollbar-width: none;  /* Firefox */
 } 
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: radial-gradient(circle, #7a0000 14%, #990000 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: radial-gradient(circle, #7a0000 14%, #ff0000 100%);
+}
+
+::-webkit-scrollbar-track {
+    background: #454242;
+    border-radius: 10px;
+    box-shadow: inset -4px 2px 30px #171717;
+}
+
 
 /* FOOTER */
 footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     position: fixed;
     left: 0;
@@ -160,3 +217,7 @@ footer .button {
     border-style: none;
 }
 
+/* GENERAL */
+.d-none {
+    display: none;
+}

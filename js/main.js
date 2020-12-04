@@ -20,7 +20,8 @@ const app = new Vue ({
     el: '#root',
     data: {
         movies: [],
-        tvSeries:[],
+        genres: [],
+        genresMovie: [],
         languages: [
             {
               name: "Italian",
@@ -55,6 +56,7 @@ const app = new Vue ({
         page: 1,
         totalPages: '',
         imgSrc: 'https://image.tmdb.org/t/p/w500/',
+        isActive: true,
     },
     methods: {
         search(){
@@ -69,24 +71,60 @@ const app = new Vue ({
             .then(response => {
                 this.movies = response.data;
                 this.totalPages = response.data.total_pages;
-                // this.searchMovie = '';
+                this.isActive = false;
             })
         },
         voteInStar(index,vote){
             return index <= Math.floor(vote / 2) ? 'fas fa-star' : 'far fa-star';
         },
-        checkFlag(index) {
+        checkFlag(movie) {
             for (let i = 0; i < this.languages.length; i++) {
-                if(this.languages[i].code == this.movies.results[index].original_language){
+                if(this.languages[i].code == movie){
                     return true;
                 }
             }
         },
-        langInFlag(index){
-            return 'img/' + this.movies.results[index].original_language + '.svg'
+        checkFlagGenres(movie) {
+          for (let i = 0; i < this.languages.length; i++) {
+              if(this.languages[i].code == movie){
+                  return true;
+              }
+          }
+        },
+        langInFlag(movie){
+            return 'img/' + movie + '.svg'
+        },
+        langInFlagGenres(movie){
+          return 'img/' + movie + '.svg'
         },
         selectedPage(page){
           return this.page = page;
         }
+    },
+    mounted: function() {
+      axios
+        .get('https://api.themoviedb.org/3/genre/movie/list?', {
+          params: {
+            'api_key': API_KEY,
+          }
+        })
+        .then(response => {
+          this.genres = response.data.genres;
+
+            for(let i = 0; i < this.genres.length; i++){
+              axios
+                .get('https://api.themoviedb.org/3/discover/movie?', {
+                  params: {
+                    'api_key': API_KEY,
+                    'sort_by': 'popularity.desc',
+                    page: this.page,
+                    'with_genres': this.genres[i].id,
+                  }
+                })
+                  .then(genre => {
+                    this.genresMovie.push(genre.data.results);
+                })
+            }
+        })
     }
 })
