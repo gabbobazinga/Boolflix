@@ -16,6 +16,7 @@ const app = new Vue ({
     el: '#root',
     data: {
         movies: [],
+        tvSeries:[],
         languages: [
             {
               name: "Italian",
@@ -47,27 +48,28 @@ const app = new Vue ({
             }
           ],
         searchMovie: '',
-        pageSelected: 1,
+        page: 1,
+        totalPages: '',
         imgSrc: 'https://image.tmdb.org/t/p/w500/',
     },
     methods: {
         search(){
             axios
-            .get('https://api.themoviedb.org/3/search/movie?',{
+            .get('https://api.themoviedb.org/3/search/multi',{
                 params: {
                     'api_key': API_KEY,
-                    language: 'en-US',
                     query: this.searchMovie,
-                    page: this.pageSelected,
+                    page: this.page,
                 }
             })
             .then(response => {
                 this.movies = response.data;
-                this.searchMovie = '';
+                this.totalPages = response.data.total_pages;
+                // this.searchMovie = '';
             })
         },
         voteInStar(index,vote){
-            return index <= Math.ceil(vote / 2) ? 'fas fa-star' : 'far fa-star';
+            return index <= Math.floor(vote / 2) ? 'fas fa-star' : 'far fa-star';
         },
         checkFlag(index) {
             for (let i = 0; i < this.languages.length; i++) {
@@ -78,6 +80,9 @@ const app = new Vue ({
         },
         langInFlag(index){
             return 'img/' + this.movies.results[index].original_language + '.svg'
+        },
+        selectedPage(page){
+          return this.page = page;
         }
     }
 })
