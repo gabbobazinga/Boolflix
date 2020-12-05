@@ -32,7 +32,7 @@
 						<input @keyup.enter="search()" v-model="searchMovie" type="text" name="search" placeholder="Search">
 					</div>
 				</div>
-				<main>
+				<main class="scroll-item">
 					<div class="movies-box row" :class="{'d-none': isActive}">
 						<div class="card col-xl-2 col-lg-3 col-md-3 col-sm-5" v-for="(movie,index) in movies.results">
 							<div class="top-card">
@@ -95,9 +95,12 @@
 						</div>
 					</div>
 				</main>
-				<footer>
+				<div @click="scrollToTop()" class="top-page">
+					<i class="fas fa-arrow-up"></i>
+				</div>
+				<footer :class="{'d-none': isActive}">
 					<template v-if="totalPages > 20">
-						<button @click="selectedPage(page), search()" v-for="page in 20" class="button"> {{ page }} </button>
+						<button @click="selectedPage(page), search(), scrollToTop()" v-for="page in 20" class="button"> {{ page }} </button>
 						<button class="button"> ... </button>
 					</template>
 					<template v-else>
