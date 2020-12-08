@@ -51,6 +51,29 @@ body {
     font-size: 0.9rem;
 } 
 
+.header .nav-bar {
+    margin: 0;
+    padding: 0;
+    width: 35%;
+    align-items: center;
+    list-style: none;
+}
+
+.header .nav-bar li {
+    margin-left: 18px;
+}
+
+.header .nav-bar li a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8rem;
+    opacity: 1;
+}
+
+.header .nav-bar li:hover a {
+    opacity: 0.8;
+}
+
 /* MAIN */
 .movies-box {
     padding: 0 1rem;
@@ -58,6 +81,10 @@ body {
     justify-content: center;
     height: 100%;
 }
+
+/* .card {
+    max-height: 406px;
+} */
 
 .card,
 .card-genre {
@@ -132,7 +159,7 @@ body {
 .genres-box {
     width: 95%;
     margin-left: calc(5% / 2);
-    /* margin-bottom: 2rem; */
+    margin-bottom: 2rem;
 }
 
 .genres-box h1 {
@@ -151,9 +178,8 @@ body {
 
 /* SCROLLBAR */
 main {
-    height: 87vh;
+    height: 90vh;
     overflow-y: auto;
-    margin-bottom: 3vh;
 }
 
 main::-webkit-scrollbar {
@@ -193,8 +219,8 @@ main {
 
 .top-page  {
     position: absolute;
-    left: 95vw;
-    bottom: 1vh;
+    right: 1vw;
+    bottom: 0;
     height: 3rem;
     width: 3rem;
     background-color:  #7a0000;
@@ -213,37 +239,6 @@ main {
 .top-page i {
     color: white;
     font-size: 2rem;
-}
-
-
-/* FOOTER */
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-    height: 40px;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-footer .button {
-    font-family: 'Bebas Neue', cursive;
-    font-weight: bold;
-    color: #DB1F2D;
-    height: 30px;
-    width: 30px;
-    text-align: center;
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
-    border-style: none;
 }
 
 /* GENERAL */

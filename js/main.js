@@ -41,13 +41,16 @@ const app = new Vue ({
         totalPages: '',
         imgSrc: 'https://image.tmdb.org/t/p/w500/',
         isActive: true,
+        searchAddress: '',
     },
     methods: {
         search(){
-            axios
-            .get('https://api.themoviedb.org/3/search/multi',{
+          this.page = 1;
+          axios
+            .get('https://api.themoviedb.org/3/' + this.searchAddress,{
                 params: {
                     'api_key': API_KEY,
+                    'sort_by': 'popularity.desc',
                     query: this.searchMovie,
                     page: this.page,
                 }
@@ -81,15 +84,41 @@ const app = new Vue ({
         langInFlagGenres(movie){
           return 'img/' + movie + '.svg'
         },
-        selectedPage(page){
-          return this.page = page;
-        },
         scrollToTop() {
           let windowsMovie = document.getElementsByClassName('scroll-item')[0];
           windowsMovie.scrollTo(0,0);
-        }
+        },
+        reset(){
+          this.isActive = true;
+          this.searchMovie = '';
+        },
+        scroll () {
+          let windows = document.getElementsByClassName('scroll-item')[0];
+          windows.onscroll = () => {
+            let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+      
+            if (bottomOfWindow) {
+              this.page++;
+              if(this.page <= this.totalPages){
+                axios
+                  .get('https://api.themoviedb.org/3/' + this.searchAddress,{
+                      params: {
+                          'api_key': API_KEY,
+                          query: this.searchMovie,
+                          page: this.page,
+                      }
+                  })
+                  .then(response => {
+                      let arr = response.data.results
+                      this.movies.results = [...this.movies.results, ...arr]
+                  })
+              }
+            }
+          };
+        },
     },
     mounted: function() {
+      this.scroll();
       axios
         .get('https://api.themoviedb.org/3/genre/movie/list?', {
           params: {

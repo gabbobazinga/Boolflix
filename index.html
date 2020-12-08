@@ -25,11 +25,18 @@
 	<body>
 		<div class="container-fluid">
 			<div id="root">
-				<div class="header d-flex">
-					<img @click="isActive = true" src="img/boolflix.png" alt="">
-					<div class="search d-flex">
+				<div class="header row d-flex">
+					<div class="col d-flex">
+						<img @click="reset()" src="img/boolflix.png" alt="">
+						<ul class="nav-bar d-flex">
+							<li @click="reset()"><a href="#">Home</a></li>
+							<li @click="searchAddress = 'discover/tv', search(), scrollToTop()"><a href="#">TV Series</a></li>
+							<li @click="searchAddress = 'discover/movie', search(), scrollToTop()"><a href="#">Movies</a></li>
+						</ul>
+					</div>
+					<div class="col-3 search d-flex">
 						<i class="fas fa-search"></i>
-						<input @keyup.enter="search()" v-model="searchMovie" type="text" name="search" placeholder="Search">
+						<input @keyup.enter="searchAddress = 'search/multi', search(), scrollToTop()" v-model="searchMovie" type="text" name="search" placeholder="Search">
 					</div>
 				</div>
 				<main class="scroll-item">
@@ -98,15 +105,6 @@
 				<div @click="scrollToTop()" class="top-page">
 					<i class="fas fa-arrow-up"></i>
 				</div>
-				<footer :class="{'d-none': isActive}">
-					<template v-if="totalPages > 20">
-						<button @click="selectedPage(page), search(), scrollToTop()" v-for="page in 20" class="button"> {{ page }} </button>
-						<button class="button"> ... </button>
-					</template>
-					<template v-else>
-						<button @click="selectedPage(page), search()" v-for="page in totalPages" class="button"> {{ page }} </button>
-					</template>
-				</footer>
 			</div>
 		</div>
 		<!-- Custom JS -->
