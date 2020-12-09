@@ -155,6 +155,14 @@ body {
     margin: 0 auto;
 }
 
+.bottom-card .overview {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 0 10%;
+}
+
 /* GENRES BOX */
 .genres-box {
     width: 95%;
@@ -182,12 +190,14 @@ main {
     overflow-y: auto;
 }
 
-main::-webkit-scrollbar {
+main::-webkit-scrollbar,
+.bottom-card .overview::-webkit-scrollbar {
     display: none;
   }
   
   /* Hide scrollbar for IE, Edge and Firefox */
-main {
+main,
+.bottom-card .overview {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 } 
