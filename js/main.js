@@ -41,6 +41,7 @@ const app = new Vue ({
         totalPages: '',
         imgSrc: 'https://image.tmdb.org/t/p/w500/',
         isActive: true,
+        isClickWrap : true,
         searchAddress: '',
     },
     methods: {

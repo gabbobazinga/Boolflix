@@ -54,7 +54,7 @@ body {
 .header .nav-bar {
     margin: 0;
     padding: 0;
-    width: 35%;
+    width: 50%;
     align-items: center;
     list-style: none;
 }
@@ -188,6 +188,7 @@ body {
 main {
     height: 90vh;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 main::-webkit-scrollbar,
@@ -230,7 +231,7 @@ main,
 .top-page  {
     position: absolute;
     right: 1vw;
-    bottom: 0;
+    bottom: 10px;
     height: 3rem;
     width: 3rem;
     background-color:  #7a0000;
@@ -254,4 +255,57 @@ main,
 /* GENERAL */
 .d-none {
     display: none;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+@media screen and (max-width: 760px) {
+    .header .nav-bar {
+        visibility: hidden;
+    }
+
+    .header > .search {
+       display: none !important;
+    }
+
+    .hamburger-menu {
+        text-align: end;
+        display: block;
+    }
+    
+    .hamburger-menu i {
+        color: #DB1F2D;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .hamburger-menu i:first-of-type {
+        color: #FFFFFF;
+        font-size: 1rem;
+        cursor: pointer;
+        vertical-align: 3px;
+        margin-right: 10px;
+    }
+
+    .wrapped-item {
+        position: absolute;
+        right: 80px;
+        top: -10px;
+        z-index: 10;
+    }
+
+    .wrapped-item ul {
+        display: block !important;
+        text-align: end;
+        list-style: none;
+    }
+
+    .wrapped-item ul li a{
+        color: #DB1F2D;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 1.5rem;
+    }
+
 }
